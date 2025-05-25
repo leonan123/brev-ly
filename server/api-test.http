@@ -7,6 +7,12 @@ POST {{baseUrl}}/links
 Content-Type: application/json
 
 {
-  "shortUrlSlug": "short-url-slug",
-  "originalUrl": "https://example.com"
+  "shortUrlSlug": "google-1",
+  "originalUrl": "https://google.com"
 }
+
+
+###
+
+# @name getLink
+GET {{baseUrl}}/links/google-1

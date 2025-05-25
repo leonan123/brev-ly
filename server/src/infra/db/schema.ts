@@ -1,13 +1,13 @@
-import {
-  text,
-  integer,
-  uuid,
-  timestamp,
-  varchar,
-  pgTable,
-} from 'drizzle-orm/pg-core'
-
 import { randomUUID } from 'node:crypto'
+
+import {
+  integer,
+  pgTable,
+  text,
+  timestamp,
+  uuid,
+  varchar,
+} from 'drizzle-orm/pg-core'
 
 export const linksTable = pgTable('links', {
   id: uuid()

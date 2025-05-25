@@ -1,8 +1,7 @@
-import { createLink } from '@/functions/create-link'
-import { db } from '@/infra/db'
-import { schemas } from '@/infra/db/schema'
 import type { FastifyPluginAsyncZod } from 'fastify-type-provider-zod'
 import { z } from 'zod'
+
+import { createLink } from '@/functions/create-link'
 
 export const createLinkRoute: FastifyPluginAsyncZod = async (app) => {
   app.post(
@@ -15,6 +14,9 @@ export const createLinkRoute: FastifyPluginAsyncZod = async (app) => {
           }),
           originalUrl: z.string().url(),
         }),
+        response: {
+          201: z.null(),
+        },
       },
     },
     async (req, reply) => {
