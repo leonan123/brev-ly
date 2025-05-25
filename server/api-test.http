@@ -17,3 +17,7 @@ GET {{baseUrl}}/links/google-1
 ###
 # @name deleteLink
 DELETE {{baseUrl}}/links/google-1
+
+###
+# @name getLinks
+GET {{baseUrl}}/links
