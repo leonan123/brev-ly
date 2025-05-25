@@ -18,3 +18,7 @@ export const linksTable = pgTable('links', {
   accessCount: integer('access_count').default(0).notNull(),
   createdAt: timestamp('created_at').defaultNow().notNull(),
 })
+
+export const schemas = {
+  links: linksTable,
+}

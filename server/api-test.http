@@ -1,0 +1,12 @@
+@baseUrl = http://localhost:3333
+
+### 
+
+# @name createLink
+POST {{baseUrl}}/links
+Content-Type: application/json
+
+{
+  "shortUrlSlug": "short-url-slug",
+  "originalUrl": "https://example.com"
+}

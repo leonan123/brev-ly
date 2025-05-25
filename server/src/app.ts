@@ -4,15 +4,14 @@ import {
   validatorCompiler,
   ZodTypeProvider,
 } from 'fastify-type-provider-zod'
-import { test } from './infra/http/routes/test.route'
+import { createLinkRoute } from './infra/http/routes/create-link.route'
+import { errorHandler } from './error-handler'
 
 export const app = fastify().withTypeProvider<ZodTypeProvider>()
 
 app.setValidatorCompiler(validatorCompiler)
 app.setSerializerCompiler(serializerCompiler)
 
-app.get('/', () => {
-  return 'Hello World'
-})
+app.setErrorHandler(errorHandler)
 
-app.register(test)
+app.register(createLinkRoute)
