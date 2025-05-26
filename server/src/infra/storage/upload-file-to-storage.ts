@@ -1,5 +1,3 @@
-import { randomUUID } from 'node:crypto'
-import { basename, extname } from 'node:path'
 import { Readable } from 'node:stream'
 
 import { Upload } from '@aws-sdk/lib-storage'
