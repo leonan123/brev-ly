@@ -1,3 +1,4 @@
+import { fastifyCors } from '@fastify/cors'
 import fastify from 'fastify'
 import {
   serializerCompiler,
@@ -13,6 +14,10 @@ import { fetchLinksRoute } from './infra/http/routes/fetch-links.route'
 import { getLinkRoute } from './infra/http/routes/get-link.route'
 
 export const app = fastify().withTypeProvider<ZodTypeProvider>()
+
+app.register(fastifyCors, {
+  origin: '*',
+})
 
 app.setValidatorCompiler(validatorCompiler)
 app.setSerializerCompiler(serializerCompiler)
