@@ -8,6 +8,8 @@ export const createLinkRoute: FastifyPluginAsyncZod = async (app) => {
     '/links',
     {
       schema: {
+        tags: ['links'],
+        description: 'Create a new link',
         body: z.object({
           shortUrlSlug: z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, {
             message: 'Short URL slug must be a valid slug',

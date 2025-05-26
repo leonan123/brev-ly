@@ -8,6 +8,8 @@ export const fetchLinksRoute: FastifyPluginAsyncZod = async (app) => {
     '/links',
     {
       schema: {
+        tags: ['links'],
+        description: 'Fetch all links',
         response: {
           200: z.array(
             z.object({

@@ -19,6 +19,6 @@ export const linksTable = pgTable('links', {
   createdAt: timestamp('created_at').defaultNow().notNull(),
 })
 
-export const schemas = {
+export const schema = {
   links: linksTable,
 }

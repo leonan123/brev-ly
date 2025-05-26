@@ -6,7 +6,7 @@ POST {{baseUrl}}/links
 Content-Type: application/json
 
 {
-  "shortUrlSlug": "google-1",
+  "shortUrlSlug": "short-url-slug-1",
   "originalUrl": "https://google.com"
 }
 
@@ -21,3 +21,7 @@ DELETE {{baseUrl}}/links/google-1
 ###
 # @name getLinks
 GET {{baseUrl}}/links
+
+### 
+# @name exportLinks
+GET {{baseUrl}}/export-links

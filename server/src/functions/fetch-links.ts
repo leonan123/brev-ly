@@ -1,6 +1,6 @@
 import { db } from '@/infra/db'
-import { schemas } from '@/infra/db/schema'
+import { schema } from '@/infra/db/schema'
 
 export function fetchLinks() {
-  return db.select().from(schemas.links)
+  return db.select().from(schema.links)
 }
