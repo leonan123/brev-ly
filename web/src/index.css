@@ -13,4 +13,6 @@
   --color-gray-400: #74798b;
   --color-gray-500: #4d505c;
   --color-gray-600: #1f2025;
+
+  --text-xxs: 0.625rem; /* 10px */
 }
