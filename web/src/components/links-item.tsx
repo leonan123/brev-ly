@@ -10,8 +10,15 @@ import { toast } from 'sonner'
 
 import { deleteLink } from '../http/delete-link'
 import { queryClient } from '../lib/react-query'
-import type { Link } from './links-list'
 import { Button } from './ui/button'
+
+interface Link {
+  id: string
+  originalUrl: string
+  shortUrlSlug: string
+  accessCount: number
+  createdAt: Date
+}
 
 interface LinksItemProps {
   link: Link

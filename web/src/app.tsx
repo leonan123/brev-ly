@@ -1,9 +1,9 @@
-import { DownloadSimpleIcon } from '@phosphor-icons/react'
+import { LinkIcon } from '@phosphor-icons/react'
 import { useQuery } from '@tanstack/react-query'
 
 import { CreateShortLinkForm } from './components/create-short-link-form'
-import { LinksList } from './components/links-list'
-import { Button } from './components/ui/button'
+import { DownloadCSVButton } from './components/download-csv-button'
+import { LinksItem } from './components/links-item'
 import { getLinks } from './http/get-links'
 
 interface Link {
@@ -38,25 +38,26 @@ export function App() {
             <CreateShortLinkForm />
           </div>
 
-          <div className="w-full space-y-4 rounded-lg bg-white p-6">
+          <div className="flex h-fit min-h-[234px] w-full flex-col space-y-4 rounded-lg bg-white p-6">
             <div className="flex items-center justify-between">
               <h2 className="text-lg font-bold text-gray-600">Meus links</h2>
 
-              <Button variant="secondary">
-                <DownloadSimpleIcon
-                  size={16}
-                  className="shrink-0 text-gray-500"
-                />
-                <span>Baixar CSV</span>
-              </Button>
+              <DownloadCSVButton disabled={links?.length === 0} />
             </div>
 
             {!links || links.length === 0 ? (
-              <p className="text-sm text-gray-500">
-                Você ainda não possui nenhum link
-              </p>
+              <div className="flex flex-1 flex-col items-center justify-center gap-3 border-t border-gray-200">
+                <LinkIcon size={32} className="text-gray-400" />
+                <p className="text-xxs text-gray-500 uppercase">
+                  Ainda não existem links cadastrados
+                </p>
+              </div>
             ) : (
-              <LinksList links={links} />
+              <ul>
+                {links.map((link) => (
+                  <LinksItem key={link.id} link={link} />
+                ))}
+              </ul>
             )}
           </div>
         </div>
