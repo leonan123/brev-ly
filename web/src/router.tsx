@@ -1,10 +1,10 @@
-import { Route, Routes } from 'react-router'
+import { Route, type RouteProps, Routes } from 'react-router'
 
 import { App } from './app'
 import { NotFoundPage } from './routes/not-found'
 import { RedirectPage } from './routes/redirect-page'
 
-const routes = [
+const routes: RouteProps[] = [
   {
     path: '/',
     element: <App />,

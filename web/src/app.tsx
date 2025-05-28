@@ -18,6 +18,7 @@ export function App() {
   const { data: links } = useQuery<Link[]>({
     queryKey: ['links'],
     queryFn: getLinks,
+    refetchOnWindowFocus: true,
   })
 
   return (
