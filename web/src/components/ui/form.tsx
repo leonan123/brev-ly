@@ -48,10 +48,7 @@ export function FormMessage({ className, ...props }: FormMessageProps) {
     <div className="flex items-center gap-2">
       <WarningIcon size={16} className="text-danger" />
 
-      <p
-        className={twMerge('text-xs text-gray-500 transition-all', className)}
-        {...props}
-      />
+      <p className={twMerge('text-xs text-gray-500', className)} {...props} />
     </div>
   )
 }

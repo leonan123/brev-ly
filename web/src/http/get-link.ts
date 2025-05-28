@@ -1,7 +1,10 @@
 import { env } from '../env'
 
-interface GetLinkResponse {
+export interface GetLinkResponse {
+  id: string
+  shortUrlSlug: string
   originalUrl: string
+  accessCount: number
 }
 
 export async function getLink(shortUrlSlug: string) {
@@ -11,9 +14,7 @@ export async function getLink(shortUrlSlug: string) {
     throw new Error('Não foi possível obter o link')
   }
 
-  const { originalUrl } = (await response.json()) as GetLinkResponse
+  const linkData = (await response.json()) as GetLinkResponse
 
-  return {
-    originalUrl,
-  }
+  return linkData
 }

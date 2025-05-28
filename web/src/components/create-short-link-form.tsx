@@ -1,10 +1,11 @@
 import { zodResolver } from '@hookform/resolvers/zod'
-import { useMutation, useQueryClient } from '@tanstack/react-query'
+import { useMutation } from '@tanstack/react-query'
 import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
 import { z } from 'zod'
 
 import { createLink } from '../http/create-link'
+import { queryClient } from '../lib/react-query'
 import { Button } from './ui/button'
 import { FormControl, FormItem, FormLabel, FormMessage } from './ui/form'
 import { Input } from './ui/input'
@@ -22,8 +23,6 @@ const createShortLinkSchema = z.object({
 type CreateShortLinkFormData = z.infer<typeof createShortLinkSchema>
 
 export function CreateShortLinkForm() {
-  const queryClient = useQueryClient()
-
   const {
     register,
     handleSubmit,

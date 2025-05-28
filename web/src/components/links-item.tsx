@@ -8,17 +8,10 @@ import { useMutation } from '@tanstack/react-query'
 import { useState } from 'react'
 import { toast } from 'sonner'
 
+import type { Link } from '../_types/link'
 import { deleteLink } from '../http/delete-link'
 import { queryClient } from '../lib/react-query'
 import { Button } from './ui/button'
-
-interface Link {
-  id: string
-  originalUrl: string
-  shortUrlSlug: string
-  accessCount: number
-  createdAt: Date
-}
 
 interface LinksItemProps {
   link: Link
@@ -59,22 +52,23 @@ export function LinksItem({ link }: LinksItemProps) {
       key={link.id}
       className="flex items-center gap-4 border-t border-gray-200 py-3"
     >
-      <div className="flex w-[157px] flex-1 flex-col gap-1">
+      <div className="flex w-12 flex-1 flex-col gap-1">
         <a
           href={linkWithShortUrl}
           className="text-blue-base truncate text-sm font-semibold"
           target="_blank"
           rel="noopener noreferrer"
         >
-          {linkWithShortUrl}
+          <span className="hidden md:inline">{window.location.origin}/</span>
+          <span>{link.shortUrlSlug}</span>
         </a>
         <span className="truncate text-xs text-gray-500">
           {link.originalUrl}
         </span>
       </div>
 
-      <div>
-        <span className="flex-1 text-xs text-gray-500">
+      <div className="">
+        <span className="text-xs text-gray-500">
           {link.accessCount} acessos
         </span>
       </div>

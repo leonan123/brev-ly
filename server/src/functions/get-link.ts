@@ -19,9 +19,11 @@ export async function getLink(data: GetLinkInput) {
     throw new LinkNotFoundError()
   }
 
+  link.accessCount += 1
+
   await db
     .update(schema.links)
-    .set({ accessCount: link.accessCount + 1 })
+    .set({ accessCount: link.accessCount })
     .where(eq(schema.links.id, link.id))
 
   return {

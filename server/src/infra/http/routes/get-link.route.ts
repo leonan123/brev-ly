@@ -17,6 +17,9 @@ export const getLinkRoute: FastifyPluginAsyncZod = async (app) => {
         }),
         response: {
           200: z.object({
+            id: z.string().uuid(),
+            accessCount: z.number(),
+            shortUrlSlug: z.string(),
             originalUrl: z.string().url(),
           }),
         },
@@ -28,6 +31,9 @@ export const getLinkRoute: FastifyPluginAsyncZod = async (app) => {
       const { link } = await getLink({ shortUrlSlug })
 
       reply.status(200).send({
+        id: link.id,
+        accessCount: link.accessCount,
+        shortUrlSlug: link.shortUrlSlug,
         originalUrl: link.originalUrl,
       })
     },
