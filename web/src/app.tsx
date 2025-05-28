@@ -58,7 +58,7 @@ export function App() {
               </div>
             )}
 
-            {data && data?.links.length > 0 && <LinksList links={data.links} />}
+            {data && data.links.length > 0 && <LinksList links={data.links} />}
           </div>
         </div>
       </div>
