@@ -17,6 +17,16 @@
   --text-xxs: 0.625rem; /* 10px */
 
   --animate-copy: copy 0.2s ease-in-out;
+  --animate-loading-bar: loading-bar 1s linear infinite;
+
+  @keyframes loading-bar {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(calc(100% + 300px));
+    }
+  }
 
   @keyframes copy {
     from {

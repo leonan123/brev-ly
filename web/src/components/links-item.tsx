@@ -63,6 +63,8 @@ export function LinksItem({ link }: LinksItemProps) {
         <a
           href={linkWithShortUrl}
           className="text-blue-base truncate text-sm font-semibold"
+          target="_blank"
+          rel="noopener noreferrer"
         >
           {linkWithShortUrl}
         </a>

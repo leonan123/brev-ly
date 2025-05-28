@@ -1,8 +1,8 @@
 import { Route, Routes } from 'react-router'
 
 import { App } from './app'
-import { LinkPage } from './routes/link'
 import { NotFoundPage } from './routes/not-found'
+import { RedirectPage } from './routes/redirect-page'
 
 const routes = [
   {
@@ -11,7 +11,7 @@ const routes = [
   },
   {
     path: '/:shortUrlSlug',
-    element: <LinkPage />,
+    element: <RedirectPage />,
   },
   {
     path: '*',

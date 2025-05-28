@@ -20,7 +20,7 @@ export function DownloadCSVButton({
       const link = document.createElement('a')
 
       link.href = reportUrl
-      link.download = fileName?.replace('links-', '') || 'links.csv'
+      link.download = fileName || 'links.csv'
       link.click()
       link.remove()
     })
