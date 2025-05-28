@@ -14,9 +14,11 @@ export async function createLink(data: CreateLinkInput) {
     body: JSON.stringify(data),
   })
 
-  if (!response.ok) {
-    throw new Error('Failed to create link')
+  if (response.status === 409) {
+    throw new Error('Esse link encurtado já existe')
   }
 
-  console.log('Link created')
+  if (!response.ok) {
+    throw new Error('Não foi possível criar o link')
+  }
 }

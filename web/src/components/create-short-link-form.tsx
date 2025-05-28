@@ -1,5 +1,7 @@
 import { zodResolver } from '@hookform/resolvers/zod'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { useForm } from 'react-hook-form'
+import { toast } from 'sonner'
 import { z } from 'zod'
 
 import { createLink } from '../http/create-link'
@@ -20,20 +22,35 @@ const createShortLinkSchema = z.object({
 type CreateShortLinkFormData = z.infer<typeof createShortLinkSchema>
 
 export function CreateShortLinkForm() {
+  const queryClient = useQueryClient()
+
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitting },
+    reset,
+    formState: { errors },
   } = useForm<CreateShortLinkFormData>({
     resolver: zodResolver(createShortLinkSchema),
   })
 
+  const mutation = useMutation({
+    mutationFn: (data: CreateShortLinkFormData) => createLink(data),
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: ['links'],
+      })
+
+      reset()
+    },
+    onError: (error) => {
+      toast.error(error.message)
+    },
+  })
+
   async function onSubmit(data: CreateShortLinkFormData) {
-    await createLink(data)
-    console.log(data)
+    mutation.mutate(data)
   }
 
-  console.log({ errors })
   return (
     <form className="space-y-5" onSubmit={handleSubmit(onSubmit)} noValidate>
       <FormItem data-invalid={!!errors.originalUrl}>
@@ -76,7 +93,7 @@ export function CreateShortLinkForm() {
         )}
       </FormItem>
 
-      <Button type="submit" disabled={isSubmitting}>
+      <Button type="submit" disabled={mutation.isPending}>
         Salvar link
       </Button>
     </form>

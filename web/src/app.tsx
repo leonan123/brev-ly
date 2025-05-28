@@ -1,5 +1,5 @@
 import { DownloadSimpleIcon } from '@phosphor-icons/react'
-import { useEffect, useState } from 'react'
+import { useQuery } from '@tanstack/react-query'
 
 import { CreateShortLinkForm } from './components/create-short-link-form'
 import { LinksList } from './components/links-list'
@@ -15,16 +15,10 @@ interface Link {
 }
 
 export function App() {
-  const [links, setLinks] = useState([] as Link[])
-
-  useEffect(() => {
-    async function fetchLinks() {
-      const links = await getLinks()
-      setLinks(links)
-    }
-
-    fetchLinks()
-  }, [])
+  const { data: links } = useQuery<Link[]>({
+    queryKey: ['links'],
+    queryFn: getLinks,
+  })
 
   return (
     <div className="flex min-h-dvh flex-col justify-center bg-gray-200 lg:items-center">
@@ -38,7 +32,7 @@ export function App() {
         />
 
         <div className="flex w-full flex-col gap-3 md:flex-row">
-          <div className="w-full space-y-5 rounded-lg bg-white p-6 md:max-w-[380px]">
+          <div className="h-fit w-full space-y-5 rounded-lg bg-white p-6 md:max-w-[380px]">
             <h2 className="text-lg font-bold text-gray-600">Novo link</h2>
 
             <CreateShortLinkForm />
@@ -57,7 +51,13 @@ export function App() {
               </Button>
             </div>
 
-            <LinksList links={links} />
+            {!links || links.length === 0 ? (
+              <p className="text-sm text-gray-500">
+                Você ainda não possui nenhum link
+              </p>
+            ) : (
+              <LinksList links={links} />
+            )}
           </div>
         </div>
       </div>
