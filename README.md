@@ -62,6 +62,8 @@ Este comando iniciará o servidor dentro de um contêiner Docker, mapeando a por
 ## 🌐 Web (Frontend)
 Com o servidor em execução (seja localmente ou via Docker), você pode iniciar a aplicação web.
 
+configure o arquivo .env na raiz da pasta web com a URL do servidor.
+
 Navegue até a pasta da web:
 ```bash
 cd web
