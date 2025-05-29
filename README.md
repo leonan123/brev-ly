@@ -2,6 +2,8 @@
 
 Este projeto é um encurtador de URLs simples e eficiente, dividido em duas partes principais: o Server (backend) e a Web (frontend). Siga as instruções abaixo para configurar e rodar a aplicação.
 
+![thumbnail](thumbnail.png)
+
 ## ⚙️ Configuração Inicial
 Antes de iniciar qualquer serviço, certifique-se de configurar seu arquivo de variáveis de ambiente.
 
