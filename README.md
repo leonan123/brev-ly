@@ -1,36 +1,3 @@
-# Instruções
-
-configure o .env com as variáveis ambiente do server
-
-## server
-
-
-```bash
-  cd server
-  pnpm install
-
-  docker-compose up -d
-  pnpm db:migrate
-  pnpm dev
-```
-
-rodando a partir do dockerfile
-
-```bash
-  cd server
-  docker build -t brev-ly .
-  docker run -p 3333:3333 --env-file .env brev-ly-server
-```
-
-## web
-com o server rodando execute: 
-
-```bash
-  cd web
-  pnpm install
-  pnpm dev
-```
-
 # 🚀 Brev.ly - Seu Encurtador de URLs
 
 Este projeto é um encurtador de URLs simples e eficiente, dividido em duas partes principais: o Server (backend) e a Web (frontend). Siga as instruções abaixo para configurar e rodar a aplicação.
