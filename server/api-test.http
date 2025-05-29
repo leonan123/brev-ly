@@ -12,7 +12,7 @@ Content-Type: application/json
 
 ###
 # @name getLink
-GET {{baseUrl}}/links/google-1
+GET {{baseUrl}}/links/short-url-slug-1
 
 ###
 # @name deleteLink

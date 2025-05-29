@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "tsx watch src/server.ts",
     "build": "tsup",
-    "db:migrate": "pnpm drizzle-kit migrate"
+    "db:migrate": "drizzle-kit migrate"
   },
   "keywords": [],
   "author": "",

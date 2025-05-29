@@ -21,7 +21,7 @@ export function LinksItem({ link }: LinksItemProps) {
   const [isCopied, setIsCopied] = useState(false)
 
   const { mutate: deleteLinkMutation, isPending: isDeleting } = useMutation({
-    mutationFn: () => deleteLink(link.id),
+    mutationFn: () => deleteLink(link.shortUrlSlug),
     onSuccess: () => {
       queryClient.invalidateQueries({
         queryKey: ['links'],

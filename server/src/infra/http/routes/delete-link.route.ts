@@ -5,20 +5,22 @@ import { deleteLink } from '@/functions/delete-link'
 
 export const deleteLinkRoute: FastifyPluginAsyncZod = async (app) => {
   app.delete(
-    '/links/:id',
+    '/links/:shortUrlSlug',
     {
       schema: {
         tags: ['links'],
         description: 'Delete a link',
         params: z.object({
-          id: z.string().uuid(),
+          shortUrlSlug: z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, {
+            message: 'Short URL slug must be a valid slug',
+          }),
         }),
       },
     },
     async (req, reply) => {
-      const { id } = req.params
+      const { shortUrlSlug } = req.params
 
-      await deleteLink({ id })
+      await deleteLink({ shortUrlSlug })
 
       reply.status(204).send()
     },
